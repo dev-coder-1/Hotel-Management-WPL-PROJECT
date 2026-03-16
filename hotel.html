@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels - StayEase</title>
+
+    <link rel="stylesheet" href="bg.css">
+
+    <link rel="stylesheet" href="hotel.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="homepage.html">StayEase</a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="hotels.html" class="active-link">Hotels</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Bookings</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <button class="login-btn" onclick="showMessage('Login page coming soon!')">Login</button>
+                <button class="signup-btn" onclick="showMessage('Sign Up page coming soon!')">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hotels-section">
+            <div class="hotels-wrapper">
+
+                <div class="page-heading">
+                    <h1>Explore Hotels</h1>
+                    <p>Discover top-rated stays, compare prices, and book your perfect hotel.</p>
+                </div>
+                <div class="search-filter-box">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search by city or hotel name..." onkeyup="searchHotels()">
+                    </div>
+
+                    <div class="filter-box">
+                        <select id="priceFilter" onchange="filterHotels()">
+                            <option value="all">All Prices</option>
+                            <option value="low">Below ₹5000</option>
+                            <option value="mid">₹5000 - ₹10000</option>
+                            <option value="high">Above ₹10000</option>
+                        </select>
+
+                        <select id="ratingFilter" onchange="filterHotels()">
+                            <option value="all">All Ratings</option>
+                            <option value="4">4★ & Above</option>
+                            <option value="4.5">4.5★ & Above</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="hotels-grid" id="hotelsGrid">
+
+                    <div class="hotel-card" data-name="Grand Palace Mumbai" data-city="Mumbai" data-price="12000" data-rating="4.8">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Grand Palace Mumbai">
+                        <div class="hotel-info">
+                            <h3>Grand Palace Mumbai</h3>
+                            <p class="location">Mumbai, Maharashtra</p>
+                            <p class="description">Luxury hotel with sea view, rooftop dining, and premium suites.</p>
+                            <div class="hotel-meta">
+                                <span class="rating">⭐ 4.8</span>
+                                <span class="price">₹12,000 / night</span>
+                            </div>
+                            <button class="book-btn" onclick="bookHotel('Grand Palace Mumbai')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-name="Royal Nest Goa" data-city="Goa" data-price="8500" data-rating="4.5">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" alt="Royal Nest Goa">
+                        <div class="hotel-info">
+                            <h3>Royal Nest Goa</h3>
+                            <p class="location">Goa, India</p>
+                            <p class="description">Beachside stay with private balconies, pool access, and free breakfast.</p>
+                            <div class="hotel-meta">
+                                <span class="rating">⭐ 4.5</span>
+                                <span class="price">₹8,500 / night</span>
+                            </div>
+                            <button class="book-btn" onclick="bookHotel('Royal Nest Goa')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-name="Skyline Residency Bangalore" data-city="Bangalore" data-price="4800" data-rating="4.2">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa" alt="Skyline Residency Bangalore">
+                        <div class="hotel-info">
+                            <h3>Skyline Residency Bangalore</h3>
+                            <p class="location">Bangalore, Karnataka</p>
+                            <p class="description">Comfortable business hotel with modern rooms and conference facilities.</p>
+                            <div class="hotel-meta">
+                                <span class="rating">⭐ 4.2</span>
+                                <span class="price">₹4,800 / night</span>
+                            </div>
+                            <button class="book-btn" onclick="bookHotel('Skyline Residency Bangalore')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-name="Heritage Stay Jaipur" data-city="Jaipur" data-price="6200" data-rating="4.6">
+                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461" alt="Heritage Stay Jaipur">
+                        <div class="hotel-info">
+                            <h3>Heritage Stay Jaipur</h3>
+                            <p class="location">Jaipur, Rajasthan</p>
+                            <p class="description">Traditional royal interiors with modern comfort and cultural dining.</p>
+                            <div class="hotel-meta">
+                                <span class="rating">⭐ 4.6</span>
+                                <span class="price">₹6,200 / night</span>
+                            </div>
+                            <button class="book-btn" onclick="bookHotel('Heritage Stay Jaipur')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-name="Lakeview Retreat Udaipur" data-city="Udaipur" data-price="15000" data-rating="4.9">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" alt="Lakeview Retreat Udaipur">
+                        <div class="hotel-info">
+                            <h3>Lakeview Retreat Udaipur</h3>
+                            <p class="location">Udaipur, Rajasthan</p>
+                            <p class="description">Romantic lakeside luxury retreat with spa, dining, and scenic suites.</p>
+                            <div class="hotel-meta">
+                                <span class="rating">⭐ 4.9</span>
+                                <span class="price">₹15,000 / night</span>
+                            </div>
+                            <button class="book-btn" onclick="bookHotel('Lakeview Retreat Udaipur')">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-name="Urban Comfort Delhi" data-city="Delhi" data-price="3900" data-rating="4.1">
+                        <img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8" alt="Urban Comfort Delhi">
+                        <div class="hotel-info">
+                            <h3>Urban Comfort Delhi</h3>
+                            <p class="location">New Delhi, India</p>
+                            <p class="description">Affordable city stay with easy metro access and excellent service.</p>
+                            <div class="hotel-meta">
+                                <span class="rating">⭐ 4.1</span>
+                                <span class="price">₹3,900 / night</span>
+                            </div>
+                            <button class="book-btn" onclick="bookHotel('Urban Comfort Delhi')">Book Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            
+            <div class="footer-section">
+                <h3>StayEase</h3>
+                <p>Your trusted hotel booking partner for comfortable and affordable stays.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">Bookings</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: support@stayease.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Mumbai, India</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 StayEase. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showMessage(message) {
+            alert(message);
+        }
+
+        function bookHotel(hotelName) {
+            alert("You selected: " + hotelName + "\\nBooking page will be added next!");
+        }
+
+        function searchHotels() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".hotel-card");
+
+            cards.forEach(card => {
+                const name = card.getAttribute("data-name").toLowerCase();
+                const city = card.getAttribute("data-city").toLowerCase();
+
+                if (name.includes(input) || city.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            filterHotels();
+        }
+
+        function filterHotels() {
+            const priceValue = document.getElementById("priceFilter").value;
+            const ratingValue = document.getElementById("ratingFilter").value;
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".hotel-card");
+
+            cards.forEach(card => {
+                const price = parseInt(card.getAttribute("data-price"));
+                const rating = parseFloat(card.getAttribute("data-rating"));
+                const name = card.getAttribute("data-name").toLowerCase();
+                const city = card.getAttribute("data-city").toLowerCase();
+
+                let priceMatch = false;
+                let ratingMatch = false;
+                let searchMatch = name.includes(input) || city.includes(input);
+
+                if (priceValue === "all") {
+                    priceMatch = true;
+                } else if (priceValue === "low" && price < 5000) {
+                    priceMatch = true;
+                } else if (priceValue === "mid" && price >= 5000 && price <= 10000) {
+                    priceMatch = true;
+                } else if (priceValue === "high" && price > 10000) {
+                    priceMatch = true;
+                }
+                if (ratingValue === "all") {
+                    ratingMatch = true;
+                } else if (ratingValue === "4" && rating >= 4) {
+                    ratingMatch = true;
+                } else if (ratingValue === "4.5" && rating >= 4.5) {
+                    ratingMatch = true;
+                }
+
+                if (priceMatch && ratingMatch && searchMatch) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

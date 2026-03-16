@@ -19,20 +19,15 @@
 
             <ul class="nav-links">
                 <li><a href="homepage.html">Home</a></li>
-                <li><a href="#">Hotels</a></li>
+                <li><a href="hotel.html">Hotels</a></li>
                 <li><a href="#">Deals</a></li>
                 <li><a href="#">Bookings</a></li>
                 <li><a href="#">Support</a></li>
             </ul>
 
             <div class="nav-buttons">
-                <a href="login.html">
-    <button class="login-btn">Login</button>
-</a>
-
-<a href="signup.html">
-    <button class="signup-btn">Sign Up</button>
-</a>
+                <button class="login-btn" onclick="showMessage('Login page coming soon!')">Login</button>
+                <button class="signup-btn" onclick="showMessage('Sign Up page coming soon!')">Sign Up</button>
             </div>
         </nav>
     </header>
@@ -47,9 +42,10 @@
                     <div class="search-container">
                         <form class="search-form" onsubmit="searchHotels(event)">
                             
-                            <div class="search-field">
+                            <div class="search-field autocomplete-container">
                                 <label for="destination">Destination</label>
-                                <input type="text" id="destination" placeholder="Enter city or hotel name" required>
+                                <input type="text" id="destination" placeholder="Enter city" autocomplete="off" required>
+                                <div id="suggestions" class="suggestions-box"></div>
                             </div>
 
                             <div class="search-field">
@@ -96,7 +92,7 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="homepage.html">Home</a></li>
-                    <li><a href="#">Hotels</a></li>
+                    <li><a href="hotel.html">Hotels</a></li>
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Bookings</a></li>
                 </ul>
@@ -106,7 +102,7 @@
                 <h4>Support</h4>
                 <ul>
                     <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="#">Cancellation Policy</a></li>
                     <li><a href="#">FAQs</a></li>
                 </ul>
@@ -164,6 +160,78 @@
         document.getElementById("checkin").addEventListener("change", function () {
             document.getElementById("checkout").setAttribute("min", this.value);
         });
+
+        const cities = [
+            "Mumbai",
+            "Pune",
+            "Nashik",
+            "Kolhapur",
+            "Delhi",
+            "Himachal",
+            "Bangalore",
+            "Chennai",
+            "Mussoorie",
+            "Rajasthan",
+            "Kashmir"
+    ];
+
+    const destinationInput = document.getElementById("destination");
+    const suggestionsBox = document.getElementById("suggestions");
+
+    destinationInput.addEventListener("input", function () {
+        const inputValue = this.value.toLowerCase();
+        suggestionsBox.innerHTML = "";
+
+        if (inputValue === "") {
+            suggestionsBox.style.display = "none";
+            return;
+        }
+
+        const filteredCities = cities.filter(city =>
+            city.toLowerCase().startsWith(inputValue)
+        );
+
+        if (filteredCities.length === 0) {
+            suggestionsBox.style.display = "none";
+            return;
+        }
+
+        filteredCities.forEach(city => {
+            const suggestionItem = document.createElement("div");
+            suggestionItem.classList.add("suggestion-item");
+            suggestionItem.textContent = city;
+
+            suggestionItem.addEventListener("click", function () {
+                destinationInput.value = city;
+                suggestionsBox.innerHTML = "";
+                suggestionsBox.style.display = "none";
+            });
+
+            suggestionsBox.appendChild(suggestionItem);
+        });
+
+        suggestionsBox.style.display = "block";
+    });
+
+    document.addEventListener("click", function (e) {
+        if (!e.target.closest(".autocomplete-container")) {
+            suggestionsBox.style.display = "none";
+        }
+    });
+
+    document.querySelector(".search-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const selectedCity = destinationInput.value.trim();
+
+        if (!cities.includes(selectedCity)) {
+            alert("Please select a valid city from the suggestions.");
+            return;
+        }
+
+        localStorage.setItem("selectedCity", selectedCity);
+        window.location.href = "hotels.html";
+    });
     </script>
 
 </body>

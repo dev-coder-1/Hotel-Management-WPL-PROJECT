@@ -1,43 +1,58 @@
-function registerUser(){
+let generatedOTP;
 
-let username=document.getElementById("username").value;
-let email=document.getElementById("email").value;
-let password=document.getElementById("password").value;
+function sendOTP(){
 
-if(username==="" || email==="" || password===""){
-alert("Please fill all fields");
+let phone=document.getElementById("phone").value;
+
+if(phone.length!==10){
+alert("Enter valid mobile number");
 return;
 }
 
-let user={
-username:username,
-email:email,
-password:password
-};
+generatedOTP=Math.floor(1000+Math.random()*9000);
 
-localStorage.setItem(email,JSON.stringify(user));
+alert("OTP sent: "+generatedOTP); // simulation
 
-alert("Registration successful!");
+document.getElementById("otpSection").style.display="block";
 
-window.location.href="login.html";
 }
 
-function loginUser(){
+function verifyOTP(){
 
-let email=document.getElementById("loginEmail").value;
-let password=document.getElementById("loginPassword").value;
+let userOTP=document.getElementById("otp").value;
 
-let user=JSON.parse(localStorage.getItem(email));
+if(userOTP==generatedOTP){
 
-if(user && user.password===password){
-
-alert("Welcome "+user.username);
+alert("Login Successful");
 
 window.location.href="homepage.html";
 
 }else{
 
-alert("Invalid email or password");
+alert("Invalid OTP");
 
 }
+
+}
+
+function registerUser(){
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let password=document.getElementById("password").value;
+
+let user={
+name:name,
+email:email,
+phone:phone,
+password:password
+};
+
+localStorage.setItem(email,JSON.stringify(user));
+
+alert("Account created successfully");
+
+window.location.href="login.html";
+
 }

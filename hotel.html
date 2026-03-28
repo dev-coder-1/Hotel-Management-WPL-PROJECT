@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="bg.css">
 
     <link rel="stylesheet" href="hotel.css">
+    
+    
 </head>
 <body>
 
@@ -350,60 +352,26 @@
         </div>
     </footer>
 
-    <script>
-    function showMessage(message) {
-        alert(message);
-    }
+   
+ <script>
+const bookButtons = document.querySelectorAll(".book-btn");
 
-    function searchHotels() {
-        filterHotels();
-    }
+bookButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        const card = this.closest(".hotel-card");
 
-    function filterHotels() {
-        const input = document.getElementById("searchInput").value.toLowerCase().trim();
-        const priceValue = document.getElementById("priceFilter").value;
-        const ratingValue = document.getElementById("ratingFilter").value;
-        const cards = document.querySelectorAll(".hotel-card");
+        const hotelName = card.querySelector("h3").innerText;
+        const location = card.querySelector(".location").innerText;
+        const rating = card.querySelector(".rating").innerText;
+        const price = card.querySelector(".price").innerText;
 
-        cards.forEach(card => {
-            const hotelName = card.querySelector("h3").textContent.toLowerCase();
-            const city = card.querySelector(".location").textContent.toLowerCase();
-            const priceText = card.querySelector(".price").textContent;
-            const ratingText = card.querySelector(".rating").textContent;
+        window.location.href = `booking.html?hotel=${encodeURIComponent(hotelName)}&location=${encodeURIComponent(location)}&rating=${encodeURIComponent(rating)}&price=${encodeURIComponent(price)}`;
+    });
+});
 
-            const price = parseInt(priceText.replace(/[^\d]/g, ""));
-            const rating = parseFloat(ratingText.replace(/[^\d.]/g, ""));
-
-            let searchMatch = hotelName.includes(input) || city.includes(input);
-            let priceMatch = false;
-            let ratingMatch = false;
-
-            if (priceValue === "all") {
-                priceMatch = true;
-            } else if (priceValue === "low" && price < 5000) {
-                priceMatch = true;
-            } else if (priceValue === "mid" && price >= 5000 && price <= 10000) {
-                priceMatch = true;
-            } else if (priceValue === "high" && price > 10000) {
-                priceMatch = true;
-            }
-
-            if (ratingValue === "all") {
-                ratingMatch = true;
-            } else if (ratingValue === "4" && rating >= 4) {
-                ratingMatch = true;
-            } else if (ratingValue === "4.5" && rating >= 4.5) {
-                ratingMatch = true;
-            }
-
-            if (searchMatch && priceMatch && ratingMatch) {
-                card.style.display = "flex";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    }
 </script>
+
+
 
 </body>
 </html>

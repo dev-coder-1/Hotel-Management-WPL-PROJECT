@@ -365,7 +365,7 @@ bookButtons.forEach(button => {
         const rating = card.querySelector(".rating").innerText;
         const price = card.querySelector(".price").innerText;
 
-        window.location.href = `booking.html?hotel=${encodeURIComponent(hotelName)}&location=${encodeURIComponent(location)}&rating=${encodeURIComponent(rating)}&price=${encodeURIComponent(price)}`;
+        window.location.href = `bookings.php?hotel=${encodeURIComponent(hotelName)}&location=${encodeURIComponent(location)}&rating=${encodeURIComponent(rating)}&price=${encodeURIComponent(price)}`;
     });
 });
 

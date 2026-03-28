@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sign Up - StayEase</title>
-<link rel="stylesheet" href="auth.css">
+    <title>Sign Up - StayEase</title>
+    <link rel="stylesheet" href="auth.css">
 </head>
 
 <body>
 
 <div class="auth-box">
 
-<h2>Create StayEase Account</h2>
+    <h2>Create StayEase Account</h2>
 
-<input type="text" id="name" placeholder="Full Name">
+    <form action="register_process.php" method="POST">
+        <input type="text" name="fullname" id="name" placeholder="Full Name" required>
 
-<input type="email" id="email" placeholder="Email Address">
+        <input type="email" name="email" id="email" placeholder="Email Address" required>
 
-<input type="tel" id="phone" placeholder="Mobile Number">
+        <input type="tel" name="phone" id="phone" placeholder="Mobile Number" required>
 
-<input type="password" id="password" placeholder="Create Password">
+        <input type="password" name="password" id="password" placeholder="Create Password" required>
 
-<button onclick="registerUser()">Sign Up</button>
+        <button type="submit">Sign Up</button>
+    </form>
 
-<p>Already have account?
-<a href="login.html">Login</a>
-</p>
+    <p>Already have account?
+        <a href="login.html">Login</a>
+    </p>
 
 </div>
-
-<script src="auth.js"></script>
 
 </body>
 </html>

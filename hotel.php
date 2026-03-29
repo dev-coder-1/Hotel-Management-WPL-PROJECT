@@ -23,18 +23,18 @@ $isLoggedIn = isset($_SESSION['user_id']);
         <ul class="nav-links">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="hotel.php" class="active-link">Hotels</a></li>
-            <li><a href="<?php echo $isLoggedIn ? 'deals.php' : 'login.php'; ?>">Deals</a></li>
-            <li><a href="<?php echo $isLoggedIn ? 'bookings.php' : 'login.php'; ?>">Bookings</a></li>
-            <li><a href="contact.php">Contact</a></li>
+            <li><a href="<?php echo $isLoggedIn ? 'deals.php' : 'login.html'; ?>">Deals</a></li>
+            <li><a href="<?php echo $isLoggedIn ? 'bookings.php' : 'login.html'; ?>">Bookings</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
 
         <div class="nav-buttons">
             <?php if ($isLoggedIn): ?>
-                <a href="dashboard.php"><button class="login-btn">Dashboard</button></a>
+                <a href="dashboard.php"><button class="login-btn" >Dashboard</button></a>
                 <a href="logout.php"><button class="signup-btn">Logout</button></a>
             <?php else: ?>
-                <a href="login.php"><button class="login-btn">Login</button></a>
-                <a href="signup.php"><button class="signup-btn">Sign Up</button></a>
+                <a href="login.html"><button class="login-btn">Login</button></a>
+                <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
             <?php endif; ?>
         </div>
     </nav>
@@ -210,8 +210,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <ul>
                 <li><a href="homepage.php">Home</a></li>
                 <li><a href="hotel.php">Hotels</a></li>
-                <li><a href="<?php echo $isLoggedIn ? 'deals.php' : 'login.php'; ?>">Deals</a></li>
-                <li><a href="<?php echo $isLoggedIn ? 'bookings.php' : 'login.php'; ?>">Bookings</a></li>
+                <li><a href="<?php echo $isLoggedIn ? 'deals.php' : 'login.html'; ?>">Deals</a></li>
+                <li><a href="<?php echo $isLoggedIn ? 'bookings.php' : 'login.html'; ?>">Bookings</a></li>
             </ul>
         </div>
 
@@ -219,7 +219,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <h4>Support</h4>
             <ul>
                 <li><a href="#">Help Center</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="#">Cancellation Policy</a></li>
                 <li><a href="#">FAQs</a></li>
             </ul>
@@ -260,7 +260,7 @@ bookButtons.forEach(button => {
                 + "&image=" + encodeURIComponent(hotelImage);
         <?php else: ?>
             alert("Please login first to book a hotel.");
-            window.location.href = "login.php";
+            window.location.href = "login.html";
         <?php endif; ?>
     });
 });

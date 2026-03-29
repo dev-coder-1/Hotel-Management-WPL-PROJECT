@@ -104,8 +104,8 @@ $userName = isset($_SESSION['fullname']) ? htmlspecialchars($_SESSION['fullname'
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="dashboard.php">Home</a></li>
-                    <li><a href="hotel.html">Hotels</a></li>
-                    <li><a href="bookings.php">Bookings</a></li>
+                    <li><a href="hotel.php">Hotels</a></li>
+                    <li><a href="hotel.php">Bookings</a></li>
                     <li><a href="deals.php">Deals</a></li>
                 </ul>
             </div>

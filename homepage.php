@@ -20,11 +20,11 @@ session_start();
 
             <ul class="nav-links">
                 <li><a href="homepage.php">Home</a></li>
-                <li><a href="hotel.html">Hotels</a></li>
+                <li><a href="hotel.php">Hotels</a></li>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li><a href="deals.php">Deals</a></li>
-                    <li><a href="bookings.php">Bookings</a></li>
+                    <li><a href="hotel.php">Bookings</a></li>
                     <li><a href="contact.html">Support</a></li>
                     <li><a href="dashboard.php">Dashboard</a></li>
                 <?php else: ?>
@@ -106,7 +106,7 @@ session_start();
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="hotel.html">Hotels</a></li>
+                    <li><a href="hotel.php">Hotels</a></li>
 
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <li><a href="deals.php">Deals</a></li>

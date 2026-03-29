@@ -25,7 +25,7 @@ if(userOTP==generatedOTP){
 
 alert("Login Successful");
 
-window.location.href="homepage.html";
+window.location.href="homepage.php";
 
 }else{
 

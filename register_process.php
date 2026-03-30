@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "<script>
                 alert('Registration successful!');
-                window.location.href='dashboard.php';
+                window.location.href='login.html';
               </script>";
         exit();
     } else {

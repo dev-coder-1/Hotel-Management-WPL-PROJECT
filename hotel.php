@@ -1,6 +1,7 @@
 <?php
 session_start();
 $isLoggedIn = isset($_SESSION['user_id']);
+include 'includes/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +81,39 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Mumbai</p>
                         <p class="rating">⭐ 4.8</p>
                         <p class="price">₹7,500 / night</p>
+                        <?php
+                        $hotelName = "The Taj Palace Mumbai";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">
+                        Available Rooms: <?php echo $available; ?>
+                        </p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -92,7 +125,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Mumbai</p>
                         <p class="rating">⭐ 4.5</p>
                         <p class="price">₹5,200 / night</p>
+                        <?php
+                        $hotelName = "Marine Drive Residency";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -104,7 +167,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Pune</p>
                         <p class="rating">⭐ 4.6</p>
                         <p class="price">₹4,800 / night</p>
+                        <?php
+                                                $hotelName = "Pune Grand Stay";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -116,7 +209,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Pune</p>
                         <p class="rating">⭐ 4.4</p>
                         <p class="price">₹4,200 / night</p>
+                        <?php
+                                                $hotelName = "Royal Orchid Pune";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -128,7 +251,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Nashik</p>
                         <p class="rating">⭐ 4.7</p>
                         <p class="price">₹4,900 / night</p>
+                        <?php
+                                                $hotelName = "Vine Valley Resort";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -140,7 +293,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Delhi</p>
                         <p class="rating">⭐ 4.8</p>
                         <p class="price">₹6,800 / night</p>
+                        <?php
+                                                $hotelName = "Capital Crown Delhi";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -152,7 +335,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Himachal</p>
                         <p class="rating">⭐ 4.9</p>
                         <p class="price">₹6,200 / night</p>
+                        <?php
+                                                $hotelName = "Snow Peak Retreat";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -164,7 +377,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Bangalore</p>
                         <p class="rating">⭐ 4.6</p>
                         <p class="price">₹5,500 / night</p>
+                        <?php
+                                                $hotelName = "Silicon Suites Bangalore";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -176,7 +419,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Chennai</p>
                         <p class="rating">⭐ 4.5</p>
                         <p class="price">₹5,100 / night</p>
+                        <?php
+                                                $hotelName = "Marina Bay Residency";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -188,7 +461,37 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         <p class="location">Kashmir</p>
                         <p class="rating">⭐ 4.9</p>
                         <p class="price">₹7,800 / night</p>
+                        <?php
+                                                $hotelName = "Dal Lake View Resort";
+                        $today = date('Y-m-d');
+
+                        $sql = "SELECT COUNT(*) as total 
+                                FROM bookings 
+                                WHERE hotel_name='$hotelName' 
+                                AND checkin_date='$today'";
+
+                        $res = $conn->query($sql);
+                        $row = $res ? $res->fetch_assoc() : ['total' => 0];
+
+                        $totalRooms = 5;
+                        $available = $totalRooms - $row['total'];
+                        ?>
+
+                        <p style="color:lightgreen;">Available Rooms: <?php echo $available; ?></p>
+
+                        <?php if($available <= 2 && $available > 0){ ?>
+                        <p style="color:orange;">Only <?php echo $available; ?> left!</p>
+                        <?php } ?>
+
+                        <?php if($available <= 0){ ?>
+                        <p style="color:red;">❌ Fully Booked</p>
+                        <?php } ?>
+
+                        <?php if($available > 0){ ?>
                         <button class="book-btn">Book Now</button>
+                        <?php } else { ?>
+                        <button disabled>Not Available</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -240,28 +543,23 @@ $isLoggedIn = isset($_SESSION['user_id']);
 </footer>
 
 <script>
-const bookButtons = document.querySelectorAll(".book-btn");
 
-bookButtons.forEach(button => {
-    button.addEventListener("click", function() {
+
+document.querySelectorAll(".book-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+
+        if (this.disabled) return; // 🔥 IMPORTANT
+
         const card = this.closest(".hotel-card");
 
-        const hotelName = card.querySelector("h3").innerText;
+        const hotel = card.querySelector("h3").innerText;
         const location = card.querySelector(".location").innerText;
-        const rating = card.querySelector(".rating").innerText;
         const price = card.querySelector(".price").innerText;
-        const hotelImage = card.querySelector("img").src;
+        const rating = card.querySelector(".rating").innerText;
+        const image = card.querySelector("img").src;
 
-        <?php if ($isLoggedIn): ?>
-            window.location.href = "bookings.php?hotel=" + encodeURIComponent(hotelName)
-                + "&location=" + encodeURIComponent(location)
-                + "&rating=" + encodeURIComponent(rating)
-                + "&price=" + encodeURIComponent(price)
-                + "&image=" + encodeURIComponent(hotelImage);
-        <?php else: ?>
-            alert("Please login first to book a hotel.");
-            window.location.href = "login.html";
-        <?php endif; ?>
+        window.location.href =
+        `bookings.php?hotel=${hotel}&location=${location}&price=${price}&rating=${rating}&image=${image}`;
     });
 });
 </script>

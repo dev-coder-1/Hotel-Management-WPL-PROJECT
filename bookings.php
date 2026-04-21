@@ -116,4 +116,4 @@ $image = isset($_GET['image']) ? $_GET['image'] : 'https://images.unsplash.com/p
   </div>
 
 </body>
-</html>
+</html> 

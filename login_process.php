@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email) || empty($password)) {
         echo "<script>
                 alert('Please fill all fields!');
-                window.location.href='login.php';
+                window.location.href='login.html';
               </script>";
         exit();
     }
@@ -33,14 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "<script>
                     alert('Incorrect password!');
-                    window.location.href='login.php';
+                    window.location.href='login.html';
                   </script>";
             exit();
         }
     } else {
         echo "<script>
                 alert('No account found with this email!');
-                window.location.href='login.php';
+                window.location.href='login.html';
               </script>";
         exit();
     }

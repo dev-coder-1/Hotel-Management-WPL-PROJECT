@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$userName = isset($_SESSION['fullname']) ? htmlspecialchars($_SESSION['fullname']) : "User";
+$userName = isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['fullname']) : "User";
 ?>
 
 <!DOCTYPE html>

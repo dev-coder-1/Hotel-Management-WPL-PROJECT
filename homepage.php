@@ -23,12 +23,10 @@ session_start();
                 <li><a href="hotel.php">Hotels</a></li>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <li><a href="deals.php">Deals</a></li>
                     <li><a href="hotel.php">Bookings</a></li>
                     <li><a href="contact.html">Support</a></li>
                     <li><a href="dashboard.php">Dashboard</a></li>
                 <?php else: ?>
-                    <li><a href="login.html" onclick="showMessage('Please login first to access Deals')">Deals</a></li>
                     <li><a href="login.html" onclick="showMessage('Please login first to access Bookings')">Bookings</a></li>
                     <li><a href="contact.html">Support</a></li>
                 <?php endif; ?>
@@ -109,10 +107,8 @@ session_start();
                     <li><a href="hotel.php">Hotels</a></li>
 
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <li><a href="deals.php">Deals</a></li>
                         <li><a href="bookings.php">Bookings</a></li>
                     <?php else: ?>
-                        <li><a href="login.html" onclick="showMessage('Please login first to access Deals')">Deals</a></li>
                         <li><a href="login.html" onclick="showMessage('Please login first to access Bookings')">Bookings</a></li>
                     <?php endif; ?>
                 </ul>
@@ -121,10 +117,9 @@ session_start();
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="">Help Center</a></li>
+                    <li><a href="contact.html">Help Center</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="">Cancellation Policy</a></li>
-                    <li><a href="">FAQs</a></li>
+                   
                 </ul>
             </div>
 

@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$userName = isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['fullname']) : "User";
+$userName = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : "User";
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,6 @@ $userName = isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['fullname
                 <li><a href="dashboard.php">Home</a></li>
                 <li><a href="hotel.php">Hotels</a></li>
                 <li><a href="bookings.php">Bookings</a></li>
-                <li><a href="deals.php">Deals</a></li>
                 <li><a href="contact.html">Support</a></li>
             </ul>
 
@@ -106,17 +105,15 @@ $userName = isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['fullname
                     <li><a href="dashboard.php">Home</a></li>
                     <li><a href="hotel.php">Hotels</a></li>
                     <li><a href="hotel.php">Bookings</a></li>
-                    <li><a href="deals.php">Deals</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="#">Help Center</a></li>
+                    <li><a href="contact.html">Help Center</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Cancellation Policy</a></li>
-                    <li><a href="#">FAQs</a></li>
+                  
                 </ul>
             </div>
 

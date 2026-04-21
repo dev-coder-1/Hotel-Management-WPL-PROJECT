@@ -15,6 +15,7 @@ $price = intval(preg_replace('/[^0-9]/', '', $_POST['price']));
 $room_type = "Deluxe Room";
 $checkin = $_POST['checkin_date'];
 $checkout = $_POST['checkout_date'];
+$_SESSION['selected_date'] = $checkin;
 $guests = 1;
 
 // 🔥 CHECK ROOM AVAILABILITY
